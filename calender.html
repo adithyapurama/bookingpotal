@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Schedule of Auditorium</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="https://kit.fontawesome.com/dffef103ef.js"></script>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script> 
+  <style>
+    /* Styles for your calendar */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: linear-gradient(45deg, #333, #bb02ff);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .selected-date-box {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-bottom: 20px;
+background-color: white;
+    }
+
+    .calendar {
+      width: 350px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      text-align: left;
+    }
+
+    h2 {
+      font-size: 18px;
+      margin-top: 0;
+      margin-bottom: 20px;
+
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 20px;
+background-color: white;
+    }
+
+    th, td {
+      border: 2px solid #ddd;
+      padding: 8px;
+      text-align: center;
+
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    td:first-child {
+      font-weight: bold;
+      width: 10%;
+    }
+
+    td:nth-child(5) {
+      font-weight: bold;
+      background-color: #ffe6e6;
+    }
+
+    td:nth-child(8) {
+      font-weight: bold;
+    }
+
+    tr:last-child td {
+      height: 20px;
+    }
+
+    /* Style for the "Book Now" button */
+    #bookNowBtn {
+      display: none;
+      padding: 10px;
+      background-color: #4caf50;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="selected-date-box" id="selectedDateBox"></div>
+
+  <div class="calendar" id="calendar"></div>
+
+  <div id="timetable"></div>
+
+  <!-- "Book Now" button -->
+  <button id="bookNowBtn" onclick="redirectToBookingPage()">Book Now</button>
+
+  <script>
+    function createTable(dateStr) {
+      var selectedDate = new Date(dateStr);
+      var day = selectedDate.toLocaleDateString('en-US', { weekday: 'long' });
+      
+      var timetableHTML = '';
+      
+      if (day === 'Sunday') {
+        timetableHTML = `<h2>Holiday on ${selectedDate.toDateString()}</h2>`;
+      } else {
+        timetableHTML = `
+          <h2>Timetable for ${selectedDate.toDateString()}</h2>
+          <table>
+            <tr>
+              <th colspan="8">${day}</th>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>2</td>
+              <td>3</td>
+              <td>4</td>
+              <td>Lunch</td>
+              <td>5</td>
+              <td>6</td>
+              <td>7</td>
+            </tr>
+            <tr>
+ <td>9:00am - 9:55am</td>
+              <td>10:00am - 10:55am</td>
+              <td>11:00am - 11:55am</td>
+              <td>12:00pm - 12:40pm</td>
+              <td>12:40pm - 1:20pm</td>
+              <td>1:20pm - 2:15pm</td>
+              <td>2:15pm - 3:10pm</td>
+              <td>3:10pm - 4:05pm</td>
+            </tr>
+            <tr>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+          </table>
+        `;
+      }
+      
+      document.getElementById('timetable').innerHTML = timetableHTML;
+      document.getElementById('selectedDateBox').innerText = "Selected date is: " + dateStr;
+      showBookNowButton();
+    }
+
+    function showBookNowButton() {
+      document.getElementById('bookNowBtn').style.display = 'block';
+    }
+
+    function redirectToBookingPage() {
+      window.location.href = 'audi.html'; // Replace 'booking.html' with the actual URL of your booking page
+    }
+
+    flatpickr('#calendar', {
+      inline: true,
+      onChange: function(selectedDates, dateStr) {
+        createTable(dateStr);
+      }
+    });
+  </script>
+
+</body>
+</html>

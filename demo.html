@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Booking System</title>
+</head>
+<body>
+
+    <!-- Login Form -->
+    <form id="loginForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+
+        <button type="button" onclick="login()">Login</button>
+    </form>
+
+    <!-- Event Booking Form -->
+    <form id="eventForm" style="display: none;">
+        <label for="eventName">Event Name:</label>
+        <input type="text" id="eventName" name="eventName" required>
+
+        <label for="facultyName">Faculty Incharge Name:</label>
+        <input type="text" id="facultyName" name="facultyName" required>
+
+        <label for="eventDate">Event Date:</label>
+        <input type="date" id="eventDate" name="eventDate" required>
+
+        <label for="eventTimings">Event Timings:</label>
+        <select id="eventTimings" name="eventTimings" required>
+            <option value="morning">Morning (9:00 AM to 12:30 PM)</option>
+            <option value="afternoon">Afternoon (1:20 PM to 4:00 PM)</option>
+            <!-- Add more timing options as needed -->
+        </select>
+
+        <label for="organizers">Organizers:</label>
+        <input type="text" id="organizers" name="organizers" required>
+
+        <label for="facultyContact">Faculty Contact Details:</label>
+        <input type="text" id="facultyContact" name="facultyContact" required>
+
+        <button type="button" onclick="submitForm()">Book Slot</button>
+    </form>
+
+    <div id="displayData" style="display: none;"></div>
+
+    <script>
+        function login() {
+            // Get login form values
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+
+            // Perform basic authentication (replace with secure authentication)
+            if (username === "hi" && password === "hello") {
+                // Hide login form and display event booking form
+                document.getElementById("loginForm").style.display = "none";
+                document.getElementById("eventForm").style.display = "block";
+            } else {
+                alert("Invalid credentials. Please try again.");
+            }
+        }
+
+        function submitForm() {
+            // Get form values
+            var eventName = document.getElementById("eventName").value;
+            var facultyName = document.getElementById("facultyName").value;
+            var eventDate = document.getElementById("eventDate").value;
+            var eventTimings = document.getElementById("eventTimings").value;
+            var organizers = document.getElementById("organizers").value;
+            var facultyContact = document.getElementById("facultyContact").value;
+
+            // Display collected information
+            var displayData = "Event Name: " + eventName +
+                "\nFaculty Incharge Name: " + facultyName +
+                "\nEvent Date: " + eventDate +
+                "\nEvent Timings: " + eventTimings +
+                "\nOrganizers: " + organizers +
+                "\nFaculty Contact Details: " + facultyContact;
+
+            document.getElementById("displayData").innerText = displayData;
+            document.getElementById("displayData").style.display = "block";
+        }
+    </script>
+
+</body>
+</html>

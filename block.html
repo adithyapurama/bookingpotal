@@ -1,0 +1,113 @@
+<html lang="en">
+<head>
+<title>College Computer Lab Booking</title>
+<meta name="viewport" content="width=devive-width, initial-scale=1.0">
+<meta charset="utf-8">
+<script src="https://kit.fontawesome.com/dffef103ef.js"></script>
+<script src="//code.jquery.com/jquery-1.10.2.js"></script> 
+<script>  
+$(function(){      
+$("#header").load("header.html"); 
+$("#footer").load("footer.html");    
+}); 
+</script> 
+<style>
+body {
+font-family: 'Arial', sans-serif;
+margin: 0;
+padding: 0;
+background: linear-gradient(45deg, #333, #bb02ff);
+}
+header img {
+max-height: 50px;
+}
+        .page-title {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 24px;
+            color: #ffffff;
+        }
+
+        .block-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px 0;
+        }
+
+        .block {
+        
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            padding: 15px;
+            width: 200px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .block:hover {
+            transform: scale(1.05);
+        }
+
+        .block-name {
+            font-weight: bold;
+        }
+
+        .book-now-btn {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+        }
+    </style>
+</head> 
+<body>
+    <header>
+        <div id="header"></div>
+    </header>
+
+<div class="page-title" style="text-align: center;">LABS</div>
+<div>
+<div class="block-container">
+<!-- Block 1 -->
+<div class="block" onclick="location.href='ablock.html'">
+<div class="block-name">A Block</div>
+</div>
+<!-- Block 2 -->
+<div class="block" onclick="location.href='cblock.html'">
+<div class="block-name">C Block</div>
+</div>
+</div>
+<div class="block-container">
+<!-- Block 1 -->
+<div class="block" onclick="location.href='dblock.html'">
+<div class="block-name">D Block </div>
+</div>
+<!-- Block 2 -->
+<div class="block" onclick="location.href='eblock.html'">
+<div class="block-name">E Block </div>
+</div>
+</div>
+<div class="block-container">
+<!-- Block 1 -->
+<div class="block" onclick="location.href='gblock.html'">
+<div class="block-name">G Block </div>
+</div>
+<!-- Block 2 -->
+<div class="block" onclick="location.href='hblock.html'">
+<div class="block-name">H Block </div>
+</div>
+</div>
+</div>
+<div id="footer"></div>
+</body>
+</html>

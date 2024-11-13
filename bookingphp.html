@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Booking Form</title>
+    <!-- Include Flatpickr library for date selection -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+</head>
+<body>
+
+<div class="selected-date-box" id="selectedDateBox"></div>
+
+<div class="calendar" id="calendar"></div>
+
+<div id="timetable"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script>
+    function createTable(dateStr) {
+        var selectedDate = new Date(dateStr);
+        var day = selectedDate.toLocaleDateString('en-US', { weekday: 'long' });
+
+        var timetableHTML = '';
+
+        if (day === 'Sunday') {
+            timetableHTML = `<h2>Holiday on ${selectedDate.toDateString()}</h2>`;
+        } else {
+            timetableHTML = `
+                <h2>Timetable for ${selectedDate.toDateString()}</h2>
+                <table>
+                    <!-- Your timetable content goes here -->
+                </table>
+            `;
+        }
+
+        document.getElementById('timetable').innerHTML = timetableHTML;
+        document.getElementById('selectedDateBox').innerText = "Selected date is: " + dateStr; // Display selected date inside the box
+
+        // Update the hidden input field with the selected date
+        document.getElementById('selectedDate').value = dateStr;
+    }
+
+    flatpickr('#calendar', {
+        inline: true,
+        onChange: function(selectedDates, dateStr) {
+            createTable(dateStr);
+        }
+    });
+</script>
+
+<form id="eventForm">
+    <!-- Hidden input field to store the selected date -->
+    <input type="hidden" id="selectedDate" name="selectedDate" value="">
+
+    <label for="eventName">Event Name:</label>
+    <input type="text" id="eventName" name="eventName" required>
+
+    <label for="facultyName">Faculty Incharge Name:</label>
+    <input type="text" id="facultyName" name="facultyName" required>
+
+    <label for="eventTimings">Event Timings:</label>
+    <select id="eventTimings" name="eventTimings" required>
+        <option value="morning">Morning ( 9:00 AM to 12:30 PM )</option>
+        <option value="afternoon">Afternoon ( 1:20 PM to 4:00 PM )</option>
+    </select>
+
+    <label for="organizers">Organizers:</label>
+    <input type="text" id="organizers" name="organizers" required>
+
+    <label for="facultyContact">Faculty Contact Details:</label>
+    <input type="text" id="facultyContact" name="facultyContact" required>
+
+    <button type="button" onclick="submitForm()">Book Slot</button>
+</form>
+
+<script>
+    function submitForm() {
+        var eventName = document.getElementById("eventName").value;
+        var facultyName = document.getElementById("facultyName").value;
+        var eventTimings = document.getElementById("eventTimings").value;
+        var organizers = document.getElementById("organizers").value;
+        var facultyContact = document.getElementById("facultyContact").value;
+        var selectedDate = document.getElementById("selectedDate").value;
+
+        var formData = new FormData();
+        formData.append("eventName", eventName);
+        formData.append("facultyName", facultyName);
+        formData.append("eventTimings", eventTimings);
+        formData.append("organizers", organizers);
+        formData.append("facultyContact", facultyContact);
+        formData.append("selectedDate", selectedDate);
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "process_form.php", true);
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                alert(xhr.responseText);
+            } else {
+                alert("Error: " + xhr.status);
+            }
+        };
+        xhr.send(formData);
+    }
+</script>
+
+</body>
+</html>

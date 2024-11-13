@@ -1,0 +1,132 @@
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://kit.fontawesome.com/dffef103ef.js"></script>
+        <script src="//code.jquery.com/jquery-1.10.2.js"></script> 
+        <script>  
+        $(function(){      
+        $("#header").load("header.html");   
+        $("#footer").load("footer.html"); 
+        }); 
+</script>
+<title>College Computer Lab Booking</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin:0;
+    padding: 0;
+	font-family: 'Poppins', sans-serif;
+}
+body {
+margin: 0;
+padding: 0;
+background: linear-gradient(45deg, #333, #bb02ff);
+}
+
+
+.page-title {
+text-align: center;
+margin: 20px 0;
+font-size: 24px;
+color: #333;
+}
+.block-container {
+display: flex;
+flex-wrap: wrap;
+justify-content: space-around;
+padding: 20px;
+}
+
+.block {
+background-color: #fff;
+border-radius: 8px;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+margin: 10px;
+padding: 10px;
+width: 500px;
+text-align: center;
+}
+.lab {
+margin-top: 25px;
+padding: 10px;
+border: 1px solid #ddd;
+border-radius: 8px;
+background-color: rgba(255, 255, 255, 0.8);
+}
+.lab img {
+max-width: 100%;
+height: auto;
+border-radius: 8px;
+}
+.lab-name {
+margin-top: 10px;
+font-weight: bold;
+}
+.book-now-btn {
+margin-top: 10px;
+padding: 8px 15px;
+background-color: #ff0000;
+color: #fff;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+}
+</style>
+</head>
+<body>
+<header>
+    <div id="header"></div>
+</header>
+<div class="block-container" >
+<div class="block">
+<h2 style="background-color:rgb(0, 225, 255); border-radius: 100px;"><div class="lab-name">AUDITORIUM</div></h2>
+<div class="lab">
+<img src="1audi.jpeg" alt="Lab 1">
+<button class="book-now-btn" onclick="location.href='bookingphp.html'">Book Now</button>
+</div>
+</div>
+</div>
+
+
+
+<div class="block-container" >
+<div class="block">
+<h2 style="background-color:rgb(0, 225, 255); border-radius: 100px;"><div class="lab-name">D-BLOCK AUDITORIUM</div></h2>
+<div class="lab">
+<img src="2audi.jpeg" alt="Lab 1">
+<button class="book-now-btn" onclick="location.href='bookingphp.html'">Book Now</button>
+</div>
+</div>
+</div>
+
+
+<div class="block-container" >
+<div class="block">
+<h2 style="background-color:rgb(0, 225, 255); border-radius: 100px;"><div class="lab-name">D-BLOCK SEMINAR HALL</div></h2>
+<div class="lab">
+<img src="3audi.jpeg" alt="Lab 1">
+<button class="book-now-btn" onclick="location.href='audi.html'">Book Now</button>
+</div>
+</div>
+</div>
+
+
+<div class="block-container" >
+<div class="block">
+<h2 style="background-color:rgb(0, 225, 255); border-radius: 100px;"><div class="lab-name">E-BLOCK AUDITORIUM</div></h2>
+<div class="lab">
+<img src="4audi.jpeg" alt="Lab 1">
+<button class="book-now-btn" onclick="location.href='audi.html'">Book Now</button>
+</div>
+</div>
+</div>
+
+<footer>
+    <div id="footer"></div>
+</footer>
+
+
+</body>
+</html>
